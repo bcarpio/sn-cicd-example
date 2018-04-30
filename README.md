@@ -4,10 +4,10 @@
 
 Get a copy of this repo:
 
-```
+```bash
 git clone git@github.com:bmoers/sn-cicd-example.git
 
-cd sn-cicd-example.git
+cd sn-cicd-example
 ```
 
 Edit `server-options.json` and set
@@ -47,7 +47,15 @@ Edit `server-options.json` and set
 
 ## Star the CICD-Server
 
+In sn-cicd-example run:
+
+```bash
+nmp install
 ```
+
+and:
+
+```bash
 nmp start
 ```
 
@@ -58,7 +66,7 @@ It requires a run to display any information.
 
 Add a business rule to send a REST message to your CICD-server.
 
-```json
+```js
 {
     "requestor": {  // information about the user raising the build
         "userName": null,
@@ -101,7 +109,7 @@ Add a business rule to send a REST message to your CICD-server.
 
 A basic request payload would be:
 
-```json
+```js
 {
     "requestor": {
         "userName": "boris.moers",
