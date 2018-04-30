@@ -1,0 +1,24 @@
+{
+    "gitRepoRootDir": "C:/cicd-server/repos",
+    "tempBuildRootDir": "C:/cicd-server/temp-build",
+    "documentsRootDir": "C:/cicd-server/doc-root",
+    "proxy": {
+        "proxy": null,
+        "strictSSL": null
+    },
+    "slack": {
+        "active": false,
+        "webhookUri": "https://hooks.slack.com/......",
+        "channel": null
+    },
+    "browser": {
+        "bin": "C:\\PROGRA~1\\INTERN~1\\iexplore.exe",
+        "arg": [
+            "-nomerge"
+        ]
+    },
+    "server":{
+        "port": 8080,
+        "hostName": "http://localhost"
+    }
+}
