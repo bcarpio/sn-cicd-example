@@ -50,13 +50,13 @@ Edit `server-options.json` and set
 In sn-cicd-example run:
 
 ```bash
-nmp install
+npm install
 ```
 
 and:
 
 ```bash
-nmp start
+npm start
 ```
 
 The Web-UI is available under http://localhost:8080/ (depending of your server-options settings).
