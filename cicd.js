@@ -62,7 +62,95 @@ CICD.prototype.convertBuildBody = function (body){
             whatever it needs to convert the inbound body to 
             the correct format to internally call buildUpdateSetOnBranch()
         */
-        return body;
+        
+        var requestParam = ObjectAssignDeep({
+            requestor: {
+                userName: null,
+                fullName: null,
+                email: null
+            },
+            atf: {
+                name: null,
+                accessToken: null
+            },
+            updateSet: null,
+            application: {
+                id: null,
+                name: null,
+                git: {
+                    repository: null,
+                    remoteUrl: null
+                }
+            },
+            source: {
+                name: null,
+                accessToken: null
+            },
+            master: {
+                name: null,
+                accessToken: null
+            },
+            target: {
+                name: null,
+                accessToken: null
+            }
+        }, body);
+
+        var options = {
+            build: {
+                requestor: requestParam.requestor
+            },
+            atf: {
+                credentials: {
+                    name: requestParam.atf.name,
+                    oauth: {
+                        accessToken: requestParam.atf.accessToken
+                    }
+                }
+            },
+            updateSet: requestParam.updateSet,
+            application: {
+                id: requestParam.application.id,
+                name: requestParam.application.name,
+                organization: "company",
+                git: requestParam.application.git
+            },
+            host: {
+                name: requestParam.source.name,
+                credentials: {
+                    oauth: {
+                        accessToken: requestParam.source.accessToken
+                    }
+                }
+            }
+        };
+        if (requestParam.master.name) {
+            options.branch = {
+                name: "master",
+                host: {
+                    name: requestParam.master.name,
+                    credentials: {
+                        oauth: {
+                            accessToken: requestParam.master.accessToken
+                        }
+                    }
+                }
+            };
+        }
+        if (requestParam.target.name) {
+            options.deploy = {
+                host: {
+                    name: requestParam.target.name,
+                    credentials: {
+                        oauth: {
+                            accessToken: requestParam.target.accessToken
+                        }
+                    }
+                }
+            };
+        }
+
+        return options; 
     });
 };
 
