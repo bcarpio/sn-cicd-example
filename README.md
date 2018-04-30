@@ -157,10 +157,10 @@ The project is designed to use extensions. The core project [(bmoers/sn-cicd)](h
 
 ### Dependencies
 
-https://github.com/bmoers/sn-cicd-example\
---> extends\
-https://github.com/bmoers/sn-cicd\
---> uses\
-https://github.com/bmoers/sn-project\
+https://github.com/bmoers/sn-cicd-example  
+--> extends  
+https://github.com/bmoers/sn-cicd  
+--> uses  
+https://github.com/bmoers/sn-project  
 https://github.com/bmoers/sn-rest-client
 
