@@ -2,9 +2,9 @@
 
 ## Table of contents
 
-- [How to start](#how_to_start)
-- [Star the CICD-Server](#star_the_cicd-server)
-- [Basic Example](#basic_example)
+- [How to start](#how-to-start)
+- [Star the CICD-Server](#star-the-cicd-server)
+- [Basic Example](#basic-example)
 - [Prerequisites](#prerequisites)
 - [Contribute](#contribute)
 - [Dependencies](#dependencies)
