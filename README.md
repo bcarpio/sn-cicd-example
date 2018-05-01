@@ -2,12 +2,23 @@
 
 ## Table of contents
 
+- [Features](#features)
 - [How to start](#how-to-start)
 - [Star the CICD-Server](#star-the-cicd-server)
 - [Basic Example](#basic-example)
 - [Prerequisites](#prerequisites)
 - [Contribute](#contribute)
 - [Dependencies](#dependencies)
+
+## Features
+
+This is an example implementation of the [CICD Server](https://github.com/bmoers/sn-cicd) for [Service-Now](https://www.servicenow.com/). It allows to send changes captured in Update-Sets in Service-Now to a CICD pipeline including running ATF test cases.\
+Example build results:
+- [Code extraction](https://github.com/bmoers/sn-cicd-example/tree/master/example/repo)
+- [ESLint report](http://htmlpreview.github.io/?https://github.com/bmoers/sn-cicd-example/blob/master/example/doc/lint/index.html)
+- [JsDoc documentation](http://htmlpreview.github.io/?https://github.com/bmoers/sn-cicd-example/blob/master/example/doc/docs/global.module_sys_script_include.CicdDemo.html)
+
+More information about the core module can be found here https://github.com/bmoers/sn-cicd#cicd-server-for-service-now
 
 ## How to start
 
@@ -160,7 +171,7 @@ It requires a run at least one build to display any information.
     ```
 6) Make sure the settings in `server-options.json` are correct.
 7) From the base directory run `node test\basic-example.js`
-8) To browse the results run the server `npm start` and navigate to http://localhost:8080 
+8) To browse the results run the server `npm start` and navigate to http://localhost:8080
 
 ## Configure Service-Now to 'build' and Update-Set
 
