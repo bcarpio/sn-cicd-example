@@ -1,6 +1,15 @@
 # Example implementation of the CICD Server for Service-Now
 
-## How to start ?
+## Table of contents
+
+- [How to start](#how_to_start)
+- [Star the CICD-Server](#star_the_cicd-server)
+- [Basic Example](#basic_example)
+- [Prerequisites](#prerequisites)
+- [Contribute](#contribute)
+- [Dependencies](#dependencies)
+
+## How to start
 
 Get a copy of this repo:
 
@@ -59,12 +68,104 @@ and:
 npm start
 ```
 
-The Web-UI is available under http://localhost:8080/ (depending of your server-options settings).
-It requires a run to display any information.
+The web-UI is available under http://localhost:8080/ (depending of your server-options settings).
+It requires a run at least one build to display any information.
+
+## Basic Example
+
+1) Logon to a Service-Now instance. E.g. personal developer instance on https://developer.servicenow.com/
+2) Create an Update-Set. Keep a copy of the sys_id.
+3) Create an access token, either manually or with the below script. Keep a copy of the token. Please note, the token created with below script will only be valid for 30 minutes.
+
+    ```js
+    var now = new GlideDateTime(),
+        oauth = new GlideRecord('oauth_credential');
+    now.addSeconds((30 * 60)); // token valid for 30 min only!
+
+    // create a token
+    var token = "",
+        chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    for (var i = 0; i < 86; i++) {
+        token += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    oauth.setValue('peer', 'be57bb02533102006b0fc91a8dc5877c'); // ServiceNow Mobile App - for testing
+    oauth.setValue('token', token);
+    oauth.setValue('user', '6816f79cc0a8016401c5a33be04be441'); // admin
+    oauth.expires = now;
+    oauth.setValue('scopes', 'useraccount');
+    oauth.setValue('type', 'access_token');
+    oauth.setValue('client_id', '3e57bb02663102004d010ee8f561307a'); // ServiceNow Mobile App - for testing
+    oauth.insert();
+    gs.info("Use this token to connect {0}", token);
+    ```
+4) Create e.g. a script_include including JsDoc tags to be sent to the CICD pipeline.
+
+    ```js
+    /**
+     * Class Description
+     * 
+     * @class 
+     * @author Boris Moers [SRZXBX]
+     * @memberof global.module:sys_script_include
+     */
+    var CicdDemo = Class.create();
+    CicdDemo.prototype = /** @lends global.module:sys_script_include.CicdDemo.prototype */ {
+        /**
+         * Constructor
+         * 
+         * @returns {undefined}
+         */
+        initialize: function () { 
+            
+        },
+
+        /**
+         * A test function
+         * 
+         * @param {any} string the string to test
+         * @returns {boolean} a true boolean
+         */
+        test: function (string) {
+
+            return true;
+        },
+        type: 'CicdDemo'
+    };
+    ```
+
+5) Add the 'host name', 'update set sys_id' and the 'access token' to the `test\basic-example.js` file like:
+
+    ```js
+    {
+        "requestor": {
+            "userName": "boris.moers",
+            "fullName": "Boris Moers",
+            "email": "boris.moers@gmail.com"
+        },
+        "updateSet": "250b3625db311300533b5385ca961979",
+        "application": {
+            "id": "00000000000000000000000000000001",
+            "name": "Example Application",
+            "git": {
+                "enabled": false,
+                "pullRequestEnabled": false
+            }
+        },
+        "source": {
+            "name": "https://dev57666.service-now.com/",
+            "accessToken": "tyiwCTsYoKwf1N2IbxJ3uLRF5qkxrTpmUu73CV0oSkebTvwiaqaUIbwqpPoJiQSNjcNi5LD7fiCp6RLolGNqrl"
+        }
+    }
+    ```
+6) Make sure the settings in `server-options.json` are correct.
+7) From the base directory run `node test\basic-example.js`
+8) To browse the results run the server `npm start` and navigate to http://localhost:8080 
 
 ## Configure Service-Now to 'build' and Update-Set
 
-Add a business rule to send a REST message to your CICD-server.
+Add a business rule to send a REST message to your CICD-server.\
+Post a payload like below to http://&lt;server.hostName&gt;:&lt;server.port&gt;/build.
 
 ```js
 {
@@ -114,7 +215,7 @@ A basic request payload would be:
     "requestor": {
         "userName": "boris.moers",
         "fullName": "Boris Moers",
-        "email": "boris_moers@gmail.com"
+        "email": "boris.moers@gmail.com"
     },
     "atf": {
         "name": "test-user",
