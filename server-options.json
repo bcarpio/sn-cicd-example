@@ -3,8 +3,8 @@
     "tempBuildRootDir": "C:/cicd-server/temp-build",
     "documentsRootDir": "C:/cicd-server/doc-root",
     "proxy": {
-        "proxy": "http://gate-zrh-os.swissre.com:8080",
-        "strictSSL": false
+        "proxy": null,
+        "strictSSL": null
     },
     "slack": {
         "active": false,
