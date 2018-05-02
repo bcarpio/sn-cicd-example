@@ -6,6 +6,8 @@
 - [How to start](#how-to-start)
 - [Star the CICD-Server](#star-the-cicd-server)
 - [Basic Example](#basic-example)
+- [Video](#video)
+- [Installation steps](#installation-steps)
 - [Prerequisites](#prerequisites)
 - [Contribute](#contribute)
 - [Dependencies](#dependencies)
@@ -83,6 +85,13 @@ The web-UI is available under http://localhost:8080/ (depending of your server-o
 It requires a run at least one build to display any information.
 
 ## Basic Example
+
+### Video
+
+A short video how to get this example server running.\
+[![CICD Server for Service-Now example](http://img.youtube.com/vi/sTCaUUOoPfE/0.jpg)](http://www.youtube.com/watch?v=sTCaUUOoPfE)
+
+### Installation steps
 
 1) Logon to a Service-Now instance. E.g. personal developer instance on https://developer.servicenow.com/
 2) Create an Update-Set. Keep a copy of the sys_id.
