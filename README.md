@@ -4,7 +4,7 @@
 
 - [Features](#features)
 - [How to start](#how-to-start)
-- [Star the CICD-Server](#star-the-cicd-server)
+- [Start the CICD-Server](#start-the-cicd-server)
 - [Basic Example](#basic-example)
 - [Video](#video)
 - [Installation steps](#installation-steps)
@@ -67,7 +67,7 @@ Edit `server-options.json` and set
 }
 ```
 
-## Star the CICD-Server
+## Start the CICD-Server
 
 In sn-cicd-example run:
 
