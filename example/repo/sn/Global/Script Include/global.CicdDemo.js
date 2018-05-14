@@ -11,7 +11,7 @@
      * Class Description
      * 
      * @class 
-     * @author Boris Moers [SRZXBX]
+     * @author Boris Moers
      * @memberof global.module:sys_script_include
      */
     var CicdDemo = Class.create();
