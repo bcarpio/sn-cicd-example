@@ -126,7 +126,7 @@ A short video how to get this example server running.\
      * Class Description
      * 
      * @class 
-     * @author Boris Moers [SRZXBX]
+     * @author Boris Moers
      * @memberof global.module:sys_script_include
      */
     var CicdDemo = Class.create();
