@@ -1,6 +1,6 @@
 {
   "name": "sn-cicd-example",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sample implementation of sn-cicd",
   "main": "cicd.js",
   "scripts": {
@@ -12,6 +12,6 @@
     "bluebird": "3.5.1",
     "nodemon": "1.17.3",
     "object-assign-deep": "0.4.0",
-    "sn-cicd": "github:bmoers/sn-cicd#semver:~1"
+    "sn-cicd": "github:bmoers/sn-cicd#semver:~2"
   }
 }
